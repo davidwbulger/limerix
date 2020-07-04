@@ -1,10 +1,13 @@
 # limerix
 Create random limericks based on source texts.
 
-To run this, try:
-  load NorthangerAbbeyLexicon.mat
-  rhsc = MakeRhymeScheme('limerick.txt');
-  AvoidSelfRhyme(lexicon, rhsc, 4, 30);
+Look at the article (the .pdf file) to read an overview of the project and see some output samples.
+
+To run this yourself in Matlab, try:
+
+    load NorthangerAbbeyLexicon.mat
+    rhsc = MakeRhymeScheme('limerick.txt');
+    AvoidSelfRhyme(lexicon, rhsc, 4, 30);
   
 In order to get MakeFrags.m working (i.e., to train the Markov chain with anything other than Northanger Abbey),
 you'll need to get hold of the CMU pronunciation dictionary. There may be some other steps required;
