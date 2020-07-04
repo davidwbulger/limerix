@@ -1,0 +1,56 @@
+========================================================================
+TEXT SAMPLE
+------------------------------------------------------------------------
+Copied all of Gutenberg's HTML version of Moby Dick from browser.
+Pasted into a txt file.
+Removed some Gutenberg stuff from file's beginning & end.
+Opened in gvim.
+:%s_\(\a\)_\u\1_g  to capitalise everything
+:%s/'/apch/
+:%s/\A/ /g
+:%s/apch/'/g  to remove all but letters, apostrophes & spaces
+:%s/\s\+/ /g  to replace white-space sequences with single spaces
+:%s/^ //
+:%s/ $//
+:g/^\s*$/d   to remove blank lines.
+:%s/ /<ctrl-Q><Enter>/g
+
+========================================================================
+DICTIONARY
+------------------------------------------------------------------------
+We can be strict with the syllable count in the scansion, or go limerick-style (any number of unstressed). Start strict for now.
+
+For each word, we need
+ the word itself,
+ the syllable count,
+ the binary vector of stresses (count primary & secondary stress the same),
+ and a sequence of rhyme tokens.
+It would be great if the CMU dictionary gave syllable breaks, but it doesn't.
+Perhaps we won't go too far wrong if we attach all consonants to preceding vowel.
+
+:g!/^\%(\a\|'\)\+ /d
+
+========================================================================
+COMBINING
+------------------------------------------------------------------------
+Actually the dictionary has an enormous number of 'words' in it, many of which are proper names et cetera, so it seems unlikely that we'll use nearly all of them. Accordingly, we should match up the words in the text sample(s) with the dictionary entries BEFORE processing the dictionary to produce the state space.
+
+What we want is a list of maximal sequences of words from the text sample which are all contained in the dictionary, and the corresponding list of words from the dictionary that we actually used.
+
+========================================================================
+NORTHANGER ABBEY
+------------------------------------------------------------------------
+Copied all of Gutenberg's HTML version of Northanger Abbey from browser.
+Pasted into a txt file.
+Opened in gvim.
+Removed some Gutenberg stuff from file's beginning & end.
+:%s_\(\a\)_\u\1_g  to capitalise everything
+:%s/'/apch/   [actually, this was a smartquote I didn't know how to type, so I grabbed it with yk, and pasted it into the :%s command with CTRL-R"]
+:%s/\A/ /g
+:%s/apch/'/g  to remove all but letters, apostrophes & spaces
+:%s/\s\+/ /g  to replace white-space sequences with single spaces
+:%s/^ //
+:%s/ $//
+:g/^\s*$/d   to remove blank lines.
+:%s/ /<ctrl-Q><Enter>/g
+
